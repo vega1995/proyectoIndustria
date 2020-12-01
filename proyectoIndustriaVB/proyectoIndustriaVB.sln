@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28729.10
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "proyectoIndustriaVB", "proyectoIndustriaVB.vbproj", "{E2723DFF-7577-4A83-976C-AEA6A7788F53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Comercializadora", "..\Comercializadora\Comercializadora.csproj", "{864E82B3-972A-4FF4-AF64-CEEEBF50466F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E2723DFF-7577-4A83-976C-AEA6A7788F53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2723DFF-7577-4A83-976C-AEA6A7788F53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2723DFF-7577-4A83-976C-AEA6A7788F53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2723DFF-7577-4A83-976C-AEA6A7788F53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{864E82B3-972A-4FF4-AF64-CEEEBF50466F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{864E82B3-972A-4FF4-AF64-CEEEBF50466F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{864E82B3-972A-4FF4-AF64-CEEEBF50466F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{864E82B3-972A-4FF4-AF64-CEEEBF50466F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {767121CF-4483-408B-89F1-D63F0F87EC75}
+	EndGlobalSection
+EndGlobal
