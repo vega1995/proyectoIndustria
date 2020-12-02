@@ -109,5 +109,10 @@ namespace Comercializadora.formularios
             fecha.Text= DateTime.Now.ToLongDateString();
             //this.WindowState = FormWindowState.Maximized;
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
