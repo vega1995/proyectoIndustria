@@ -52,6 +52,18 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="formularios\frmProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios\frmProveedor.Designer.cs">
+      <DependentUpon>frmProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formularios\mantenimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios\mantenimiento.Designer.cs">
+      <DependentUpon>mantenimiento.cs</DependentUpon>
+    </Compile>
     <Compile Include="formularios\principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +74,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularios\frmProveedor.resx">
+      <DependentUpon>frmProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularios\mantenimiento.resx">
+      <DependentUpon>mantenimiento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formularios\principal.resx">
       <DependentUpon>principal.cs</DependentUpon>
