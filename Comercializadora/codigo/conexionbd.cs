@@ -10,7 +10,7 @@ namespace Comercializadora.codigo
     class conexionbd
     {
         //data source=DESKTOP-DF7P92M; initial Catalog=Comercializadora; integrated security=true
-        string cadena = "data source=DESKTOP-DF7P92M; initial Catalog=Comercializadora; integrated security=true";
+        string cadena = "Server=tcp:serverappx.database.windows.net,1433;Database=FarmaciaDB;User ID=administrador; Password=Unah-vs2020;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
      public SqlConnection Conectarbd = new SqlConnection();
         //Constructor

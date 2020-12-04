@@ -26,13 +26,13 @@ Public Class conexionManual
 
         Dim idusuario As Integer
         Dim conexionPrueba As New SqlConnection(txtCnString.Text)
-        Dim con As New SqlCommand("Select count(id) from usuario", conexionPrueba)
+        ' Dim con As New SqlCommand("Select count(id) from usuario", conexionPrueba)
         Try
             conexionPrueba.Open()
 
             abrir()
 
-            idusuario = con.ExecuteScalar()
+            ' idusuario = con.ExecuteScalar()
             MessageBox.Show("Conexion creada correctamente", "conexion")
             Dim usuario As New Comercializadora.Form1
             usuario.Show()
