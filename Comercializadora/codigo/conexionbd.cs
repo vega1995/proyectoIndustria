@@ -49,7 +49,7 @@ namespace Comercializadora.codigo
             try
             {
                
-                da = new SqlDataAdapter("SELECT * FROM proveedor", Conectarbd);
+                da = new SqlDataAdapter("SELECT * FROM vProveedores", Conectarbd);
                 dt = new DataTable();
                 da.Fill(dt);
                 tabla.DataSource = dt;
