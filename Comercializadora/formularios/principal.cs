@@ -112,12 +112,20 @@ namespace Comercializadora.formularios
 
         private void Button1_Click(object sender, EventArgs e)
         {
+
             frmProveedor p = new frmProveedor();
-            p.Show();
+            p.ShowDialog();
             //frmProveedores prov = new frmProveedores();
            // prov.MdiParent = this;
            // prov.TopMost = true;
            // prov.Show();
+        }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            compras c = new compras();
+            c.ShowDialog();
+
         }
     }
 }

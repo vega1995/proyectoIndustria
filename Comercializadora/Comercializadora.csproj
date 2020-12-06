@@ -52,6 +52,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="formularios\compras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios\compras.Designer.cs">
+      <DependentUpon>compras.cs</DependentUpon>
+    </Compile>
     <Compile Include="formularios\frmProveedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,10 +76,19 @@
     <Compile Include="formularios\principal.Designer.cs">
       <DependentUpon>principal.cs</DependentUpon>
     </Compile>
+    <Compile Include="formularios\vista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios\vista.Designer.cs">
+      <DependentUpon>vista.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularios\compras.resx">
+      <DependentUpon>compras.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formularios\frmProveedor.resx">
       <DependentUpon>frmProveedor.cs</DependentUpon>
@@ -83,6 +98,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formularios\principal.resx">
       <DependentUpon>principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularios\vista.resx">
+      <DependentUpon>vista.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

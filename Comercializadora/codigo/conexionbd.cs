@@ -19,6 +19,8 @@ namespace Comercializadora.codigo
         SqlDataAdapter da;
         SqlDataReader dr;
         DataTable dt;
+        ComboBox cb;
+        SqlCommand cmd;
         //Constructor
         public conexionbd()
         {
@@ -44,16 +46,17 @@ namespace Comercializadora.codigo
             Conectarbd.Close();
         }
 
-        public void vistas( DataGridView tabla)
+        public void vistas( String query,DataGridView tabla)
         {
             try
             {
                
-                da = new SqlDataAdapter("SELECT * FROM vProveedores", Conectarbd);
+                da = new SqlDataAdapter(query, Conectarbd);
                 dt = new DataTable();
                 da.Fill(dt);
+                
                 tabla.DataSource = dt;
-
+                tabla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             }
             catch (SqlException ex)
             {
@@ -61,5 +64,48 @@ namespace Comercializadora.codigo
                 
             }
         }
-    }
+
+        public void vistasCombos(String query, ComboBox combito, string campo)
+        {
+
+            try
+            {
+
+                cmd = new SqlCommand(query, Conectarbd);
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    combito.Items.Add(dr[campo].ToString());
+                }
+                dr.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Ha ocurrido un error: " + e.Message);
+            }
+        }
+            
+
+
+
+
+    /*            try
+                {
+
+                    da = new SqlDataAdapter(query, Conectarbd);
+                    cb = new ComboBox();
+
+                    da.Fill(cb.);
+
+                   // tabla.DataSource = dt;
+                  //  tabla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show("Error" + ex.Message);
+
+                } */
 }
+    }
+
+

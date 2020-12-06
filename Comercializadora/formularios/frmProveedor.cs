@@ -19,7 +19,7 @@ namespace Comercializadora.formularios
         {
             codigo.conexionbd cn = new codigo.conexionbd();
             cn.abrir();
-            cn.vistas(dataGridView1);
+            cn.vistas("SELECT * FROM vProveedores", dataGridView1);
 
         }
 
