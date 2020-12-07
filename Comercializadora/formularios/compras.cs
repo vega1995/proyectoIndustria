@@ -26,6 +26,7 @@ namespace Comercializadora.formularios
             DataGridViewTextBoxColumn columna1 = new DataGridViewTextBoxColumn();
             columna1.HeaderText = "Nombre";
             columna1.Width = 200;
+            columna1.ReadOnly = true;
             dataGridView2.Columns.Add(columna1);
             DataGridViewTextBoxColumn columna2 = new DataGridViewTextBoxColumn();
             columna2.HeaderText = "Cantidad a Pedir";
@@ -39,7 +40,12 @@ namespace Comercializadora.formularios
             DataGridViewTextBoxColumn columna4 = new DataGridViewTextBoxColumn();
             columna4.HeaderText = "SubTotal";
             columna4.Width = 200;
+            columna4.ReadOnly = true;
             dataGridView2.Columns.Add(columna4);
+
+            /*Poner columna solo lectura*/
+            bloquearColumna();
+
         }
        
         public void calcular()
@@ -82,8 +88,20 @@ namespace Comercializadora.formularios
 
             }
             calcular();
+            bloquearColumna();
             
             
+        }
+        private void bloquearColumna()
+        {
+            dataGridView1.Columns["ID"].ReadOnly = true;
+            dataGridView1.Columns["Nombre"].ReadOnly = true;
+            dataGridView1.Columns["Existencia"].ReadOnly = true;
+            dataGridView1.Columns["Precio"].ReadOnly = true;
+            dataGridView1.Columns["Bodega"].ReadOnly = true;
+            dataGridView1.Columns["Fecha De Vencimiento"].ReadOnly = true;
+
+
         }
     }
 }

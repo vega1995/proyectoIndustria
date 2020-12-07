@@ -44,5 +44,33 @@ namespace Comercializadora.formularios
         {
             
         }
+
+        private void DataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            
+        }
+
+        private void soloNumeros(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void DataGridView2_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            e.Control.KeyPress -= new KeyPressEventHandler(soloNumeros);
+            if (dataGridView2.CurrentCell.ColumnIndex == 1) //Numero de columna
+            {
+                TextBox tb = e.Control as TextBox;
+                if (tb != null)
+                {
+                    tb.KeyPress += new KeyPressEventHandler(soloNumeros);
+                }
+            }
+        }
+
+        
     }
 }

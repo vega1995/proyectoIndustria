@@ -18,11 +18,15 @@ namespace Comercializadora.formularios
             InitializeComponent();
         }
 
-       
+
 
         private void Button1_Paint(object sender, PaintEventArgs e)
         {
-            
+
+        }
+        protected virtual void DataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+
         }
     }
 }

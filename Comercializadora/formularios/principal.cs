@@ -51,7 +51,8 @@ namespace Comercializadora.formularios
 
         private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
+            //this.ex();
         }
 
         private void CutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -126,6 +127,11 @@ namespace Comercializadora.formularios
             compras c = new compras();
             c.ShowDialog();
 
+        }
+
+        private void Principal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

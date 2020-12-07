@@ -678,6 +678,7 @@
             this.Text = "Comercializadora de productos medicos";
             this.TransparencyKey = System.Drawing.Color.Transparent;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Principal_FormClosing);
             this.Load += new System.EventHandler(this.Principal_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();

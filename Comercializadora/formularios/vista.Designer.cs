@@ -92,6 +92,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(646, 223);
             this.dataGridView1.TabIndex = 3;
+            this.dataGridView1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.DataGridView1_EditingControlShowing);
             // 
             // cb1
             // 
@@ -164,6 +165,7 @@
             this.dataGridView2.Size = new System.Drawing.Size(652, 223);
             this.dataGridView2.TabIndex = 9;
             this.dataGridView2.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView2_CellValueChanged);
+            this.dataGridView2.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.DataGridView2_EditingControlShowing);
             this.dataGridView2.DoubleClick += new System.EventHandler(this.DataGridView2_DoubleClick);
             // 
             // label7

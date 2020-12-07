@@ -37,6 +37,7 @@ namespace Comercializadora
             String pass = txtPassword.Text;
             principal p = new principal();
             p.Show();
+            this.Hide();
 
             
         }

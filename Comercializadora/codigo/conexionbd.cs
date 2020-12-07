@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -84,28 +85,46 @@ namespace Comercializadora.codigo
                 MessageBox.Show("Ha ocurrido un error: " + e.Message);
             }
         }
-            
+        public void llenarDataGridCombo(DataGridView tabla, String campo,String query)
+        {
+            da = new SqlDataAdapter(query, Conectarbd);
+            dt = new DataTable();
+            da.Fill(dt);
+
+            DataGridViewComboBoxColumn tipo = new DataGridViewComboBoxColumn();
+            tipo.HeaderText = campo;
+            tipo.Name = campo;
+            ArrayList fila = new ArrayList();
+            //Agregar los items
+            foreach (DataRow dr in dt.Rows)
+            {
+                fila.Add(dr[campo].ToString());
+            }
+
+            tipo.Items.AddRange(fila.ToArray());
+            tabla.Columns.Add(tipo);
+
+        }
 
 
 
+            /*            try
+                        {
 
-    /*            try
-                {
+                            da = new SqlDataAdapter(query, Conectarbd);
+                            cb = new ComboBox();
 
-                    da = new SqlDataAdapter(query, Conectarbd);
-                    cb = new ComboBox();
+                            da.Fill(cb.);
 
-                    da.Fill(cb.);
+                           // tabla.DataSource = dt;
+                          //  tabla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                        }
+                        catch (SqlException ex)
+                        {
+                            MessageBox.Show("Error" + ex.Message);
 
-                   // tabla.DataSource = dt;
-                  //  tabla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-                }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show("Error" + ex.Message);
-
-                } */
-}
+                        } */
+        }
     }
 
 
