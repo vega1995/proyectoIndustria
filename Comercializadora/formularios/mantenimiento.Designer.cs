@@ -53,8 +53,9 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(81, 33);
             this.button1.TabIndex = 1;
-            this.button1.Text = "Agregar";
+            this.button1.Text = "Salvar";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             this.button1.Paint += new System.Windows.Forms.PaintEventHandler(this.Button1_Paint);
             // 
             // mantenimiento

@@ -28,5 +28,10 @@ namespace Comercializadora.formularios
         {
 
         }
+
+        protected virtual void Button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

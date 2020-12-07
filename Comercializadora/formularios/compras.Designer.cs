@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -38,17 +39,38 @@
             // 
             this.button3.Click += new System.EventHandler(this.Button3_Click);
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(955, 364);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(151, 27);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "Aceptar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click_1);
+            // 
             // compras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.ClientSize = new System.Drawing.Size(1370, 437);
+            this.Controls.Add(this.button1);
             this.Name = "compras";
             this.Load += new System.EventHandler(this.Compras_Load);
+            this.Controls.SetChildIndex(this.label3, 0);
+            this.Controls.SetChildIndex(this.comboBox1, 0);
+            this.Controls.SetChildIndex(this.total, 0);
+            this.Controls.SetChildIndex(this.radioButton1, 0);
+            this.Controls.SetChildIndex(this.radioButton2, 0);
+            this.Controls.SetChildIndex(this.button3, 0);
+            this.Controls.SetChildIndex(this.button1, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Button button1;
     }
 }

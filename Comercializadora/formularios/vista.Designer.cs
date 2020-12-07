@@ -43,7 +43,6 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
             this.total = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -123,7 +122,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(1171, 34);
+            this.label4.Location = new System.Drawing.Point(1147, 34);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(49, 19);
             this.label4.TabIndex = 6;
@@ -133,7 +132,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(1171, 62);
+            this.label5.Location = new System.Drawing.Point(1147, 62);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(123, 19);
             this.label5.TabIndex = 7;
@@ -143,7 +142,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(1288, 62);
+            this.label6.Location = new System.Drawing.Point(1264, 62);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(56, 19);
             this.label6.TabIndex = 8;
@@ -162,7 +161,7 @@
             this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView2.Location = new System.Drawing.Point(690, 108);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(652, 223);
+            this.dataGridView2.Size = new System.Drawing.Size(634, 223);
             this.dataGridView2.TabIndex = 9;
             this.dataGridView2.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView2_CellValueChanged);
             this.dataGridView2.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.DataGridView2_EditingControlShowing);
@@ -172,7 +171,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(1214, 334);
+            this.label7.Location = new System.Drawing.Point(1171, 334);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(60, 19);
             this.label7.TabIndex = 10;
@@ -182,21 +181,11 @@
             // 
             this.total.AutoSize = true;
             this.total.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.total.Location = new System.Drawing.Point(1301, 334);
+            this.total.Location = new System.Drawing.Point(1258, 334);
             this.total.Name = "total";
             this.total.Size = new System.Drawing.Size(46, 19);
             this.total.TabIndex = 11;
             this.total.Text = "0.00 ";
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(951, 364);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(139, 27);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Aceptar";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
@@ -246,7 +235,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(1275, 334);
+            this.label10.Location = new System.Drawing.Point(1232, 334);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(23, 19);
             this.label10.TabIndex = 17;
@@ -256,7 +245,7 @@
             // 
             this.fecha.AutoSize = true;
             this.fecha.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fecha.Location = new System.Drawing.Point(1226, 37);
+            this.fecha.Location = new System.Drawing.Point(1202, 34);
             this.fecha.Name = "fecha";
             this.fecha.Size = new System.Drawing.Size(93, 19);
             this.fecha.TabIndex = 18;
@@ -284,7 +273,6 @@
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.total);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.dataGridView2);
@@ -320,7 +308,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label9;
         public System.Windows.Forms.RadioButton radioButton1;

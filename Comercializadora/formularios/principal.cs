@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Comercializadora.codigo;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -108,6 +110,13 @@ namespace Comercializadora.formularios
         private void Principal_Load(object sender, EventArgs e)
         {
             fecha.Text= DateTime.Now.ToLongDateString();
+            //conexionbd c = new conexionbd();
+           // Form1 nom= new Form1();
+           
+           // MessageBox.Show(nom.user());
+            //c.abrir();
+            //MessageBox.Show(c.mostrarNombre());
+           // estado.Text = c.mostrarNombre();
             //this.WindowState = FormWindowState.Maximized;
         }
 

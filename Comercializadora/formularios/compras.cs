@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Comercializadora.formularios
 {
-    public partial class compras : Comercializadora.formularios.vista
+    public partial class compras : vista
     {
         DataGridViewTextBoxColumn columna3;
         public compras()
@@ -20,7 +20,7 @@ namespace Comercializadora.formularios
         {
             codigo.conexionbd cn = new codigo.conexionbd();
             cn.abrir();
-            cn.vistas("select * from vinventario order by Existencia asc, [Fecha de Vencimiento] asc", dataGridView1);
+            cn.vistas("vinventario order by Existencia asc, [Fecha de Vencimiento] asc", dataGridView1);
             cn.vistasCombos("select nombre from proveedor", comboBox1, "nombre");
 
             DataGridViewTextBoxColumn columna1 = new DataGridViewTextBoxColumn();
@@ -30,18 +30,24 @@ namespace Comercializadora.formularios
             dataGridView2.Columns.Add(columna1);
             DataGridViewTextBoxColumn columna2 = new DataGridViewTextBoxColumn();
             columna2.HeaderText = "Cantidad a Pedir";
-            columna2.Width = 200;
+            columna2.Width = 100;
             dataGridView2.Columns.Add(columna2);
             columna3 = new DataGridViewTextBoxColumn();
             columna3.HeaderText = "Precio";
-            columna3.Width = 200;
+            columna3.Width = 100;
             dataGridView2.Columns.Add(columna3);
 
             DataGridViewTextBoxColumn columna4 = new DataGridViewTextBoxColumn();
-            columna4.HeaderText = "SubTotal";
-            columna4.Width = 200;
-            columna4.ReadOnly = true;
+            columna4.HeaderText = "ISV";
+            columna4.Width = 100;
             dataGridView2.Columns.Add(columna4);
+
+            DataGridViewTextBoxColumn columna5 = new DataGridViewTextBoxColumn();
+            columna5.HeaderText = "SubTotal";
+            columna5.Width = 100;
+            columna5.ReadOnly = true;
+            dataGridView2.Columns.Add(columna5);
+
 
             /*Poner columna solo lectura*/
             bloquearColumna();
@@ -51,13 +57,18 @@ namespace Comercializadora.formularios
         public void calcular()
         {
             double Total = 0;
+            int i = 0;
+            double ISV = 0;
             foreach (DataGridViewRow row in dataGridView2.Rows)
             {
+                ISV += Convert.ToDouble(dataGridView2.Rows[i].Cells[1].Value) * Convert.ToDouble(dataGridView2.Rows[i].Cells[2].Value) * Convert.ToDouble(dataGridView2.Rows[i].Cells[3].Value);
                 Total += Convert.ToDouble(row.Cells[1].Value) * Convert.ToDouble(row.Cells[2].Value);
-
+                dataGridView2.Rows[i].Cells[4].Value = Convert.ToDouble(row.Cells[1].Value) * Convert.ToDouble(row.Cells[2].Value);
+                //row.Cells[4].RowIndex[i].Value = Total;
+                i++;
             }
-
-            total.Text = Total.ToString();
+            double granTotal = Total + ISV;
+            total.Text = granTotal.ToString();
 
         }
         
@@ -76,7 +87,8 @@ namespace Comercializadora.formularios
                         fila.Cells[0].Value = row.Cells[2].Value;
                         fila.Cells[1].Value = "1";
                         fila.Cells[2].Value = row.Cells[4].Value;
-                        fila.Cells[3].Value = row.Cells[4].Value;
+                        fila.Cells[3].Value = "0.15";
+                        fila.Cells[4].Value= row.Cells[4].Value;
                         dataGridView2.Rows.Add(fila);
                     }
                     
@@ -92,7 +104,9 @@ namespace Comercializadora.formularios
             
             
         }
-        private void bloquearColumna()
+       
+
+            private void bloquearColumna()
         {
             dataGridView1.Columns["ID"].ReadOnly = true;
             dataGridView1.Columns["Nombre"].ReadOnly = true;
@@ -102,6 +116,12 @@ namespace Comercializadora.formularios
             dataGridView1.Columns["Fecha De Vencimiento"].ReadOnly = true;
 
 
+        }
+
+        private void Button1_Click_1(object sender, EventArgs e)
+        { 
+            //Querys para Compras y CompraDetalle
+            MessageBox.Show("Pego");
         }
     }
 }

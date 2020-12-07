@@ -15,7 +15,7 @@ namespace Comercializadora
 {
     public partial class Form1 : Form
     {
-        
+        public string usuario;
         public Form1()
         {
             
@@ -33,13 +33,23 @@ namespace Comercializadora
         private void Button1_Click(object sender, EventArgs e)
         {
            // conexionbd conectar = new conexionbd();
-            String usuario=txtUsuario.Text;
+            usuario=txtUsuario.Text;
             String pass = txtPassword.Text;
+            conexionbd log = new conexionbd();
+            log.validarUsuario(usuario,pass);
+           // MessageBox.Show("Bienvenido: " + log.mostrarNombre(usuario));
             principal p = new principal();
             p.Show();
-            this.Hide();
-
+            // principal p = new principal();
+            // p.Show();
+            // this.Hide();
+           
             
+        }
+        public String user()
+        {
+            string uso = txtUsuario.Text;
+            return uso;
         }
     }
 }

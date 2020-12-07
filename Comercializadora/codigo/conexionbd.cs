@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Comercializadora.formularios;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
@@ -22,6 +23,7 @@ namespace Comercializadora.codigo
         DataTable dt;
         ComboBox cb;
         SqlCommand cmd;
+        public String a;
         //Constructor
         public conexionbd()
         {
@@ -49,7 +51,19 @@ namespace Comercializadora.codigo
 
         public void vistas( String query,DataGridView tabla)
         {
-            try
+            
+            da = new SqlDataAdapter("select * from " + query, Conectarbd);
+            dt = new DataTable();
+            SqlCommandBuilder constructor = new SqlCommandBuilder(da);
+            constructor.QuotePrefix = "[";
+            constructor.QuoteSuffix = "]";
+             da.Fill(dt);
+                
+                tabla.DataSource = dt;
+                tabla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+             
+           
+           /* try
             {
                
                 da = new SqlDataAdapter(query, Conectarbd);
@@ -63,7 +77,7 @@ namespace Comercializadora.codigo
             {
                 MessageBox.Show("Error" + ex.Message);
                 
-            }
+            }*/
         }
 
         public void vistasCombos(String query, ComboBox combito, string campo)
@@ -105,6 +119,46 @@ namespace Comercializadora.codigo
             tabla.Columns.Add(tipo);
 
         }
+        public void guardar()
+        {
+
+            da.Update(dt);
+            MessageBox.Show("Datos salvados correctamente", "Confirmacion");
+        }
+
+        public void validarUsuario(string usuario, string pass)
+        {
+            try
+            {
+                
+                using (Conectarbd)
+                {
+                    Conectarbd.Open();
+                    using (SqlCommand cmd = new SqlCommand("SELECT usuarioID, contraseña FROM usuario WHERE usuarioID='" + usuario + "' AND contraseña='" + pass + "'", Conectarbd))
+                    {
+                        SqlDataReader dr = cmd.ExecuteReader();
+                        if (dr.Read())
+                        {
+                           //a = dr.GetSqlValue(0).ToString();
+                           // MessageBox.Show(a);
+                            MessageBox.Show("Login exitoso.");
+                            
+                           // Form1 f = new Form1();
+                           // f.Hide();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Datos incorrectos.");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+       
 
 
 

@@ -30,14 +30,18 @@ namespace Comercializadora.formularios
         {
            
             double Total = 0;
-            foreach (DataGridViewRow row in dataGridView2.Rows)
+            int i = 0;
+            double ISV=0;
+            foreach (DataGridViewRow row in dataGridView2.Rows )
             {
-
+                ISV += Convert.ToDouble(dataGridView2.Rows[i].Cells[1].Value) * Convert.ToDouble(dataGridView2.Rows[i].Cells[2].Value) * Convert.ToDouble(dataGridView2.Rows[i].Cells[3].Value);
                 Total += Convert.ToDouble(row.Cells[1].Value) * Convert.ToDouble(row.Cells[2].Value);
-                row.Cells[3].Value = Total;
+                dataGridView2.Rows[i].Cells[4].Value = Convert.ToDouble(row.Cells[1].Value) * Convert.ToDouble(row.Cells[2].Value);
+                //row.Cells[4].RowIndex[i].Value = Total;
+                i++;
             }
-
-            total.Text = Total.ToString();
+            double granTotal = Total + ISV;
+            total.Text = granTotal.ToString();
         }
 
         private void DataGridView2_DoubleClick(object sender, EventArgs e)
@@ -70,6 +74,8 @@ namespace Comercializadora.formularios
                 }
             }
         }
+
+
 
         
     }
