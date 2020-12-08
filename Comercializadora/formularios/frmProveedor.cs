@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Comercializadora.formularios
@@ -27,6 +28,8 @@ namespace Comercializadora.formularios
             cn = new conexionbd();
             cn.abrir();
             cn.vistas("vProveedores", dataGridView1);
+            ((DataGridViewTextBoxColumn)dataGridView1.Columns["RTN"]).MaxInputLength = 14;
+            ((DataGridViewTextBoxColumn)dataGridView1.Columns["Telefono"]).MaxInputLength = 8;
             //cn.llenarDataGridCombo(dataGridView1, "Tipo", "select TOP(2) tipo from vproveedores ");
 
         }
@@ -42,6 +45,8 @@ namespace Comercializadora.formularios
                     tb.KeyPress += new KeyPressEventHandler(soloNumeros);
                 }
             }
+
+        
 
         }
 
@@ -85,6 +90,55 @@ namespace Comercializadora.formularios
               */
 
 
+        }
+        protected override void DataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.CurrentCell.ColumnIndex == 4)
+            {
+                String email = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+
+                if (email_bien_escrito(email))
+                {
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Invalido");
+                    dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "";
+                }
+                
+            }
+             
+            
+        }
+
+        protected override void DataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if(dataGridView1.CurrentCell.ColumnIndex == 4)
+            {
+                
+            }
+        }
+
+        private Boolean email_bien_escrito(String email)
+        {
+            String expresion;
+            expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+            if (Regex.IsMatch(email, expresion))
+            {
+                if (Regex.Replace(email, expresion, String.Empty).Length == 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
         }
 
     }

@@ -28,6 +28,7 @@ namespace Comercializadora.formularios
 
         public void DataGridView2_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
+
            
             double Total = 0;
             int i = 0;
@@ -40,8 +41,10 @@ namespace Comercializadora.formularios
                 //row.Cells[4].RowIndex[i].Value = Total;
                 i++;
             }
+            txtSubTotal.Text = Total.ToString("N");
+            txtISV.Text = ISV.ToString("N");
             double granTotal = Total + ISV;
-            total.Text = granTotal.ToString();
+            txtTotal.Text = granTotal.ToString("N");
         }
 
         private void DataGridView2_DoubleClick(object sender, EventArgs e)
@@ -75,8 +78,9 @@ namespace Comercializadora.formularios
             }
         }
 
+        protected virtual void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
-
-        
+        }
     }
 }

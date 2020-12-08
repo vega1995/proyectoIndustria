@@ -42,14 +42,17 @@
             this.label6 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
-            this.total = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.label10 = new System.Windows.Forms.Label();
             this.fecha = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtSubTotal = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtISV = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtTotal = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -117,6 +120,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(297, 26);
             this.comboBox1.TabIndex = 5;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -171,71 +175,27 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(1171, 334);
+            this.label7.Location = new System.Drawing.Point(1089, 337);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(60, 19);
+            this.label7.Size = new System.Drawing.Size(89, 19);
             this.label7.TabIndex = 10;
-            this.label7.Text = "TOTAL";
-            // 
-            // total
-            // 
-            this.total.AutoSize = true;
-            this.total.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.total.Location = new System.Drawing.Point(1258, 334);
-            this.total.Name = "total";
-            this.total.Size = new System.Drawing.Size(46, 19);
-            this.total.TabIndex = 11;
-            this.total.Text = "0.00 ";
+            this.label7.Text = "SUBTOTAL";
             // 
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(1112, 364);
+            this.button2.Location = new System.Drawing.Point(1181, 449);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(139, 27);
             this.button2.TabIndex = 13;
             this.button2.Text = "Cancelar";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(686, 72);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(121, 19);
-            this.label9.TabIndex = 14;
-            this.label9.Text = "Tipo de compra";
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.Location = new System.Drawing.Point(818, 70);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(87, 23);
-            this.radioButton1.TabIndex = 15;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Crédito";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton2.Location = new System.Drawing.Point(911, 70);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(95, 23);
-            this.radioButton2.TabIndex = 16;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Contado";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(1232, 334);
+            this.label10.Location = new System.Drawing.Point(1184, 401);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(23, 19);
             this.label10.TabIndex = 17;
@@ -260,20 +220,93 @@
             this.button3.Text = "Agregar";
             this.button3.UseVisualStyleBackColor = true;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(1184, 337);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(23, 19);
+            this.label8.TabIndex = 20;
+            this.label8.Text = "L.";
+            // 
+            // txtSubTotal
+            // 
+            this.txtSubTotal.Enabled = false;
+            this.txtSubTotal.Location = new System.Drawing.Point(1213, 335);
+            this.txtSubTotal.Name = "txtSubTotal";
+            this.txtSubTotal.Size = new System.Drawing.Size(111, 26);
+            this.txtSubTotal.TabIndex = 21;
+            this.txtSubTotal.Text = "0.00";
+            this.txtSubTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(1144, 369);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(34, 19);
+            this.label11.TabIndex = 22;
+            this.label11.Text = "ISV";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(1184, 369);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(23, 19);
+            this.label12.TabIndex = 23;
+            this.label12.Text = "L.";
+            // 
+            // txtISV
+            // 
+            this.txtISV.Enabled = false;
+            this.txtISV.Location = new System.Drawing.Point(1213, 367);
+            this.txtISV.Name = "txtISV";
+            this.txtISV.Size = new System.Drawing.Size(111, 26);
+            this.txtISV.TabIndex = 24;
+            this.txtISV.Text = "0.00";
+            this.txtISV.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(1118, 401);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(60, 19);
+            this.label13.TabIndex = 25;
+            this.label13.Text = "TOTAL";
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.Enabled = false;
+            this.txtTotal.Location = new System.Drawing.Point(1213, 399);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(111, 26);
+            this.txtTotal.TabIndex = 26;
+            this.txtTotal.Text = "0.00";
+            this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // vista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.ClientSize = new System.Drawing.Size(1370, 432);
+            this.ClientSize = new System.Drawing.Size(1370, 490);
+            this.Controls.Add(this.txtTotal);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.txtISV);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.txtSubTotal);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.fecha);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.total);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.label6);
@@ -309,17 +342,20 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label9;
-        public System.Windows.Forms.RadioButton radioButton1;
-        public System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label fecha;
         public System.Windows.Forms.DataGridView dataGridView1;
         public System.Windows.Forms.Label label3;
         public System.Windows.Forms.ComboBox comboBox1;
         public System.Windows.Forms.DataGridView dataGridView2;
-        public System.Windows.Forms.Label total;
         public System.Windows.Forms.Button button3;
         private System.Windows.Forms.DataGridViewCheckBoxColumn cb1;
+        private System.Windows.Forms.Label label8;
+        public System.Windows.Forms.TextBox txtSubTotal;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        public System.Windows.Forms.TextBox txtISV;
+        private System.Windows.Forms.Label label13;
+        public System.Windows.Forms.TextBox txtTotal;
     }
 }

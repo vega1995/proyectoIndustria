@@ -37,9 +37,9 @@ namespace Comercializadora
             String pass = txtPassword.Text;
             conexionbd log = new conexionbd();
             log.validarUsuario(usuario,pass);
+
            // MessageBox.Show("Bienvenido: " + log.mostrarNombre(usuario));
-            principal p = new principal();
-            p.Show();
+           
             // principal p = new principal();
             // p.Show();
             // this.Hide();

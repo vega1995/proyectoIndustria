@@ -33,5 +33,21 @@ namespace Comercializadora.formularios
         {
 
         }
-    }
-}
+
+        protected virtual void DataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+
+
+        private void DataGridView1_Validating(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        protected virtual void DataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+
+        }
+    }  }

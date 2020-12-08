@@ -121,9 +121,17 @@ namespace Comercializadora.codigo
         }
         public void guardar()
         {
+            try
+            {
+                da.Update(dt);
+                MessageBox.Show("Datos salvados correctamente", "Confirmacion");
+            }
+            catch (SqlException ex)
+            {
 
-            da.Update(dt);
-            MessageBox.Show("Datos salvados correctamente", "Confirmacion");
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         public void validarUsuario(string usuario, string pass)
@@ -142,9 +150,10 @@ namespace Comercializadora.codigo
                            //a = dr.GetSqlValue(0).ToString();
                            // MessageBox.Show(a);
                             MessageBox.Show("Login exitoso.");
-                            
-                           // Form1 f = new Form1();
-                           // f.Hide();
+                            principal p = new principal();
+                            p.Show();
+                            Form1 f = new Form1();
+                            f.Hide();
                         }
                         else
                         {
@@ -158,27 +167,64 @@ namespace Comercializadora.codigo
                 MessageBox.Show(ex.ToString());
             }
         }
-       
 
+        public void verificarRadio(String nombre, RadioButton radio1, RadioButton radio2)
+        {
+            
+            try
+            {
 
-
-            /*            try
+                using (Conectarbd)
+                {
+                    Conectarbd.Open();
+                    using (SqlCommand cmd = new SqlCommand("select nombre,tipo from Proveedor where Nombre='" + nombre+"'", Conectarbd))
+                    {
+                        SqlDataReader dr = cmd.ExecuteReader();
+                        if (dr.Read())
                         {
-
-                            da = new SqlDataAdapter(query, Conectarbd);
-                            cb = new ComboBox();
-
-                            da.Fill(cb.);
-
-                           // tabla.DataSource = dt;
-                          //  tabla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                            MessageBox.Show(dr.GetSqlValue(1).ToString());
+                            if (dr.GetSqlValue(1).ToString()=="Credito")
+                            {
+                                radio1.Checked = true;
+                            }
+                            else
+                            {
+                                radio2.Checked = true;
+                            }
+                           
                         }
-                        catch (SqlException ex)
+                        else
                         {
-                            MessageBox.Show("Error" + ex.Message);
+                            MessageBox.Show("Datos incorrectos.");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
 
-                        } */
         }
+
+
+        /*            try
+                    {
+
+                        da = new SqlDataAdapter(query, Conectarbd);
+                        cb = new ComboBox();
+
+                        da.Fill(cb.);
+
+                       // tabla.DataSource = dt;
+                      //  tabla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show("Error" + ex.Message);
+
+                    } */
+    }
     }
 
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Comercializadora.codigo;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,7 +19,7 @@ namespace Comercializadora.formularios
 
         private void Compras_Load(object sender, EventArgs e)
         {
-            codigo.conexionbd cn = new codigo.conexionbd();
+            conexionbd cn = new conexionbd();
             cn.abrir();
             cn.vistas("vinventario order by Existencia asc, [Fecha de Vencimiento] asc", dataGridView1);
             cn.vistasCombos("select nombre from proveedor", comboBox1, "nombre");
@@ -67,8 +68,10 @@ namespace Comercializadora.formularios
                 //row.Cells[4].RowIndex[i].Value = Total;
                 i++;
             }
+            txtSubTotal.Text = Total.ToString("N");
+            txtISV.Text = ISV.ToString("N");
             double granTotal = Total + ISV;
-            total.Text = granTotal.ToString();
+            txtTotal.Text = granTotal.ToString("N");
 
         }
         
@@ -119,9 +122,21 @@ namespace Comercializadora.formularios
         }
 
         private void Button1_Click_1(object sender, EventArgs e)
-        { 
+        {
+            DialogResult pos;
             //Querys para Compras y CompraDetalle
-            MessageBox.Show("Pego");
+            pos=MessageBox.Show("Desea hacer la compra", "Mensaje", MessageBoxButtons.YesNoCancel);
+            if (pos== DialogResult.Yes)
+            {
+                //Aqui van los procedimientos almacenados
+            }
+            MessageBox.Show("En Mantenimiento");
+        }
+        protected override void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           string combo = comboBox1.SelectedItem.ToString();
+            conexionbd c = new conexionbd();
+            c.verificarRadio(combo, rdbContado, rtbCredito);
         }
     }
 }
