@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Comercializadora.codigo
 {
-    class login
+    internal static class Login
     {
-        internal static class Login
-        {
-            internal static string usuarioLogeado { get; set; }
-        }
+        internal static string usuarioLogeado { get; set; }
+        internal static string nombreLogeado { get; set; }
+        internal static string ProveedorIDlog { get; set; }
+        internal static string tipoCompra { get; set; }
     }
+
 }

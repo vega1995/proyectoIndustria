@@ -116,7 +116,8 @@ namespace Comercializadora.formularios
            // MessageBox.Show(nom.user());
             //c.abrir();
             //MessageBox.Show(c.mostrarNombre());
-           // estado.Text = c.mostrarNombre();
+           estado.Text = Login.nombreLogeado;
+            
             //this.WindowState = FormWindowState.Maximized;
         }
 

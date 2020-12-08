@@ -142,13 +142,17 @@ namespace Comercializadora.codigo
                 using (Conectarbd)
                 {
                     Conectarbd.Open();
-                    using (SqlCommand cmd = new SqlCommand("SELECT usuarioID, contraseña FROM usuario WHERE usuarioID='" + usuario + "' AND contraseña='" + pass + "'", Conectarbd))
+                    //string f = "select a.UsuarioId,a.Contraseña,b.Nombre from usuario a inner join empleado b on a.EmpleadoId=b.EmpleadoID where usuarioID="+usuario+ "  AND contraseña='"+pass+"'";
+                    using (SqlCommand cmd = new SqlCommand("select a.UsuarioId,a.Contraseña,b.Nombre from usuario a inner join empleado b on a.EmpleadoId=b.EmpleadoID where a.usuarioID=" + usuario + "  AND a.contraseña='" + pass + "'", Conectarbd))
                     {
                         SqlDataReader dr = cmd.ExecuteReader();
                         if (dr.Read())
                         {
-                           //a = dr.GetSqlValue(0).ToString();
-                           // MessageBox.Show(a);
+                            string nombre= dr.GetSqlValue(2).ToString();
+                            //a = dr.GetSqlValue(0).ToString();
+                            Login.usuarioLogeado = usuario;
+                            Login.nombreLogeado = nombre;
+                            // MessageBox.Show(a);
                             MessageBox.Show("Login exitoso.");
                             principal p = new principal();
                             p.Show();
@@ -160,6 +164,7 @@ namespace Comercializadora.codigo
                             MessageBox.Show("Datos incorrectos.");
                         }
                     }
+                    
                 }
             }
             catch (Exception ex)
@@ -177,12 +182,13 @@ namespace Comercializadora.codigo
                 using (Conectarbd)
                 {
                     Conectarbd.Open();
-                    using (SqlCommand cmd = new SqlCommand("select nombre,tipo from Proveedor where Nombre='" + nombre+"'", Conectarbd))
+                    using (SqlCommand cmd = new SqlCommand("select nombre,tipo,ProveedorID from Proveedor where Nombre='" + nombre+"'", Conectarbd))
                     {
                         SqlDataReader dr = cmd.ExecuteReader();
                         if (dr.Read())
                         {
-                            MessageBox.Show(dr.GetSqlValue(1).ToString());
+                            Login.ProveedorIDlog = dr.GetSqlValue(2).ToString();
+                            Login.tipoCompra = dr.GetSqlValue(0).ToString();
                             if (dr.GetSqlValue(1).ToString()=="Credito")
                             {
                                 radio1.Checked = true;
@@ -207,23 +213,39 @@ namespace Comercializadora.codigo
 
         }
 
+        public void mostrarNombre(string usuario)
+        {
+            String nombre="";
+            try
+            {
 
-        /*            try
+                using (Conectarbd)
+                {
+                    Conectarbd.Open();
+                    using (SqlCommand cmd = new SqlCommand("select Nombre from Empleado where EmpleadoID in(select UsuarioID from Usuario  where UsuarioID="+usuario+")", Conectarbd))
                     {
+                        SqlDataReader dr = cmd.ExecuteReader();
+                        if (dr.Read())
+                        {
+                            Login.nombreLogeado = dr.GetSqlValue(0).ToString();
 
-                        da = new SqlDataAdapter(query, Conectarbd);
-                        cb = new ComboBox();
-
-                        da.Fill(cb.);
-
-                       // tabla.DataSource = dt;
-                      //  tabla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Datos incorrectos.");
+                        }
                     }
-                    catch (SqlException ex)
-                    {
-                        MessageBox.Show("Error" + ex.Message);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
 
-                    } */
+           
+        }
+
+     
     }
     }
 

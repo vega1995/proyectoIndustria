@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -128,9 +129,36 @@ namespace Comercializadora.formularios
             pos=MessageBox.Show("Desea hacer la compra", "Mensaje", MessageBoxButtons.YesNoCancel);
             if (pos== DialogResult.Yes)
             {
+                MessageBox.Show("En Mantenimiento :)");
                 //Aqui van los procedimientos almacenados
+
+
+                //Agregando compra
+                /*  try
+                  {
+                      string empleadoID = Login.usuarioLogeado;
+                      string proveedorID = Login.ProveedorIDlog;
+                      string tipoCompra = Login.tipoCompra;
+                     // string fecha = dateTime.ToString("dd/MM/yyyy");
+                      conexionbd cn = new conexionbd();
+                      using (SqlCommand cmd = new SqlCommand("spAgregarCompra", cn.Conectarbd))
+                      {
+
+                          cmd.CommandType = CommandType.StoredProcedure;
+                          cmd.Parameters.Add(new SqlParameter("@ProveedorId",proveedorID));
+                          cmd.Parameters.Add(new SqlParameter("@empleadoId", empleadoID));
+                          cmd.Parameters.Add(new SqlParameter("@tipoCompra", tipoCompra));
+                      }
+
+
+                  }
+                  catch (Exception)
+                  {
+
+                      throw;
+                  }*/
             }
-            MessageBox.Show("En Mantenimiento");
+           
         }
         protected override void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
