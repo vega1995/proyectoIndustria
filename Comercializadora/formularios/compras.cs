@@ -22,7 +22,7 @@ namespace Comercializadora.formularios
         {
             conexionbd cn = new conexionbd();
             cn.abrir();
-            cn.vistas("vinventario order by Existencia asc, [Fecha de Vencimiento] asc", dataGridView1);
+            cn.vistas("vInventarioCompra order by Existencia asc, [Fecha de Vencimiento] asc", dataGridView1);
             cn.vistasCombos("select nombre from proveedor", comboBox1, "nombre");
 
             DataGridViewTextBoxColumn columna1 = new DataGridViewTextBoxColumn();
@@ -164,7 +164,13 @@ namespace Comercializadora.formularios
         {
            string combo = comboBox1.SelectedItem.ToString();
             conexionbd c = new conexionbd();
-            c.verificarRadio(combo, rdbContado, rtbCredito);
+            c.verificarRadio(combo, rdbContado, rtbCredito, txtSaldo,labelSaldo);
+        }
+
+        private void TextBox1_TextChanged(object sender, EventArgs e)
+        {
+            conexionbd con = new conexionbd();
+            con.vistas(" vInventarioCompra where Nombre Like '%" + textBox1.Text+"%'", dataGridView1);
         }
     }
 }

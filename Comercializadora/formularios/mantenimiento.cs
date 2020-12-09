@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Comercializadora.codigo;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -49,5 +50,18 @@ namespace Comercializadora.formularios
         protected virtual void DataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
 
+        }
+
+        private void Mantenimiento_Load(object sender, EventArgs e)
+        {
+            rbNombre.Checked = true;
+        }
+
+        
+
+        protected virtual void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            
+            
         }
     }  }

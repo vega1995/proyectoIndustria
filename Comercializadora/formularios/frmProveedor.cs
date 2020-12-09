@@ -141,5 +141,19 @@ namespace Comercializadora.formularios
             }
         }
 
+        protected override void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            conexionbd con = new conexionbd();
+            if (rbNombre.Checked)
+            {
+                con.vistas("vProveedores WHERE nombre LIKE '%" + txtBuscar.Text + "%'", dataGridView1);
+            }
+            else
+            {
+                con.vistas("vProveedores WHERE RTN LIKE '%" + txtBuscar.Text + "%'", dataGridView1);
+            }
+
+        }
+
     }
 }

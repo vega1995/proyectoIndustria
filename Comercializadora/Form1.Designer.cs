@@ -107,7 +107,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Comercializadora.Properties.Resources.design;
+            this.BackgroundImage = global::Comercializadora.Properties.Resources._2814815;
             this.ClientSize = new System.Drawing.Size(562, 317);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.txtPassword);

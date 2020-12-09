@@ -143,5 +143,11 @@ namespace Comercializadora.formularios
         {
             Application.Exit();
         }
+
+        private void Button6_Click(object sender, EventArgs e)
+        {
+            Inventario v = new Inventario();
+            v.ShowDialog();
+        }
     }
 }

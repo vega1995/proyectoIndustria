@@ -173,7 +173,7 @@ namespace Comercializadora.codigo
             }
         }
 
-        public void verificarRadio(String nombre, RadioButton radio1, RadioButton radio2)
+        public void verificarRadio(String nombre, RadioButton radio1, RadioButton radio2, TextBox saldo, Label etiqueta)
         {
             
             try
@@ -182,7 +182,7 @@ namespace Comercializadora.codigo
                 using (Conectarbd)
                 {
                     Conectarbd.Open();
-                    using (SqlCommand cmd = new SqlCommand("select nombre,tipo,ProveedorID from Proveedor where Nombre='" + nombre+"'", Conectarbd))
+                    using (SqlCommand cmd = new SqlCommand("select nombre,tipo,ProveedorID,saldo from Proveedor where Nombre='" + nombre+"'", Conectarbd))
                     {
                         SqlDataReader dr = cmd.ExecuteReader();
                         if (dr.Read())
@@ -192,10 +192,20 @@ namespace Comercializadora.codigo
                             if (dr.GetSqlValue(1).ToString()=="Credito")
                             {
                                 radio1.Checked = true;
+                                saldo.Text = dr.GetValue(3).ToString();
+                                saldo.Visible = true;
+                                etiqueta.Visible = true;
+                                
                             }
                             else
                             {
+                                if (saldo.Visible)
+                                {
+                                    saldo.Visible = false;
+                                    etiqueta.Visible = false;
+                                }
                                 radio2.Checked = true;
+
                             }
                            
                         }

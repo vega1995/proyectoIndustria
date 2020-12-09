@@ -82,5 +82,10 @@ namespace Comercializadora.formularios
         {
 
         }
+
+        private void Label5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

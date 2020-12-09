@@ -32,12 +32,14 @@
             // 
             // frmProveedor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
-            this.ClientSize = new System.Drawing.Size(743, 356);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.ClientSize = new System.Drawing.Size(660, 389);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmProveedor";
             this.Text = "Proveedores";
             this.Load += new System.EventHandler(this.FrmProveedor_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
