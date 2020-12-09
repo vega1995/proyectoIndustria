@@ -50,4 +50,9 @@ namespace Comercializadora.formularios
         {
 
         }
+
+        private void mantenimiento_Load(object sender, EventArgs e)
+        {
+
+        }
     }  }

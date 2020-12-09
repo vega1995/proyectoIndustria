@@ -134,14 +134,24 @@ namespace Comercializadora.formularios
 
         private void Button3_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             compras c = new compras();
             c.ShowDialog();
+            this.Cursor = Cursors.Default;
 
         }
 
         private void Principal_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+            Inventario i = new Inventario();
+            i.ShowDialog();
+            this.Cursor = Cursors.Default;
         }
     }
 }

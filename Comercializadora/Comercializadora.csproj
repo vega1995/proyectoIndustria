@@ -65,6 +65,12 @@
     <Compile Include="formularios\frmProveedor.Designer.cs">
       <DependentUpon>frmProveedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="formularios\Inventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios\Inventario.Designer.cs">
+      <DependentUpon>Inventario.cs</DependentUpon>
+    </Compile>
     <Compile Include="formularios\mantenimiento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formularios\frmProveedor.resx">
       <DependentUpon>frmProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularios\Inventario.resx">
+      <DependentUpon>Inventario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formularios\mantenimiento.resx">
       <DependentUpon>mantenimiento.cs</DependentUpon>

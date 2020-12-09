@@ -63,7 +63,9 @@ namespace Comercializadora.formularios
         {
             try
             {
-              cn.guardar();
+                this.Cursor = Cursors.WaitCursor;
+                cn.guardar();
+                this.Cursor = Cursors.WaitCursor;
             }
             catch (Exception ex)
             {
@@ -71,7 +73,7 @@ namespace Comercializadora.formularios
             }
 
             
-            /**
+            /*
              AdaptadorDB = new SqlDataAdapter();
              AdaptadorDB.SelectCommand = new SqlCommand("spAgregarProveedor", cn.Conectarbd);
              AdaptadorDB.SelectCommand.CommandType = CommandType.StoredProcedure;

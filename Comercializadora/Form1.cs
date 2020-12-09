@@ -32,19 +32,21 @@ namespace Comercializadora
 
         private void Button1_Click(object sender, EventArgs e)
         {
-           // conexionbd conectar = new conexionbd();
-            usuario=txtUsuario.Text;
+            this.Cursor = Cursors.AppStarting;
+            // conexionbd conectar = new conexionbd();
+            usuario =txtUsuario.Text;
             String pass = txtPassword.Text;
             conexionbd log = new conexionbd();
             log.validarUsuario(usuario,pass);
+            this.Cursor = Cursors.Default;
             //log.mostrarNombre(usuario);
             // MessageBox.Show("Bienvenido: " + log.mostrarNombre(usuario));
-            
+
             // principal p = new principal();
             // p.Show();
             // this.Hide();
-           
-            
+
+
         }
         public String user()
         {
