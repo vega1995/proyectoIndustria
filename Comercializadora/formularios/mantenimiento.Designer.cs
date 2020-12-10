@@ -133,11 +133,11 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button button1;
         public System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.TextBox txtBuscar;
         public System.Windows.Forms.RadioButton rbNombre;
         public System.Windows.Forms.RadioButton rbRTN;
+        public System.Windows.Forms.Button button1;
     }
 }
