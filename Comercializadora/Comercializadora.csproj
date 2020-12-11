@@ -59,6 +59,12 @@
     <Compile Include="formularios\compras.Designer.cs">
       <DependentUpon>compras.cs</DependentUpon>
     </Compile>
+    <Compile Include="formularios\frmPagos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios\frmPagos.Designer.cs">
+      <DependentUpon>frmPagos.cs</DependentUpon>
+    </Compile>
     <Compile Include="formularios\frmProveedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formularios\compras.resx">
       <DependentUpon>compras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularios\frmPagos.resx">
+      <DependentUpon>frmPagos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formularios\frmProveedor.resx">
       <DependentUpon>frmProveedor.cs</DependentUpon>
