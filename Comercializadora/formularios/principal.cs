@@ -149,5 +149,11 @@ namespace Comercializadora.formularios
             Inventario v = new Inventario();
             v.ShowDialog();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            frmSaldoProveedor sp = new frmSaldoProveedor();
+            sp.ShowDialog();
+        }
     }
 }

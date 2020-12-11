@@ -33,8 +33,8 @@ namespace Comercializadora.formularios
             cn.vistas("fSaldoProveedor('"+fecha+"')", dataGridView1);
             rbRTN.Text = "ID";
 
-            foreach (DataColumn col in dt.Columns)
-                col.ReadOnly = true;
+            /*foreach (DataColumn col in dt.Columns)
+                col.ReadOnly = true;*/
            
 
         }
