@@ -161,5 +161,11 @@ namespace Comercializadora.formularios
             frmPagos sp = new frmPagos();
             sp.ShowDialog();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            frmVerificarCompra vc = new frmVerificarCompra();
+            vc.ShowDialog();
+        }
     }
 }
