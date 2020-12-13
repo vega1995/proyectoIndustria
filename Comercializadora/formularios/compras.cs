@@ -126,6 +126,25 @@ namespace Comercializadora.formularios
         {
             DialogResult pos;
             //Querys para Compras y CompraDetalle
+
+
+            //Validacion si es contado o credito
+
+            if (rtbCredito.Checked)
+            {
+                //Carga de form de verificacion
+
+
+
+
+            }
+
+
+
+
+
+
+
             pos=MessageBox.Show("Desea hacer la compra", "Mensaje", MessageBoxButtons.YesNoCancel);
             if (pos== DialogResult.Yes)
             {

@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="codigo\conexionbd.cs" />
     <Compile Include="codigo\login.cs" />
+    <Compile Include="codigo\verificacion.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

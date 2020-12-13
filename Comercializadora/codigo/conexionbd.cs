@@ -13,10 +13,10 @@ namespace Comercializadora.codigo
 {
     class conexionbd
     {
-       
-        //data source=DESKTOP-DF7P92M; initial Catalog=Comercializadora; integrated security=true
-        string cadena = "Server=tcp:serverappx.database.windows.net,1433;Database=FarmaciaDB;User ID=administrador; Password=Unah-vs2020;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
+        //data source=DESKTOP-DF7P92M; initial Catalog=Comercializadora; integrated security=true
+        // string cadena = "Server=tcp:serverappx.database.windows.net,1433;Database=FarmaciaDB;User ID=administrador; Password=Unah-vs2020;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        string cadena = "Server=tcp:industria2020vs.database.windows.net,1433;Initial Catalog=FarmaciaDB;Persist Security Info=False;User ID=administrador;Password=Unah-vs2020;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
      public SqlConnection Conectarbd = new SqlConnection();
         SqlDataAdapter da;
         SqlDataReader dr;
@@ -188,7 +188,7 @@ namespace Comercializadora.codigo
                         if (dr.Read())
                         {
                             Login.ProveedorIDlog = dr.GetSqlValue(2).ToString();
-                            Login.tipoCompra = dr.GetSqlValue(0).ToString();
+                            verificacion.tipoCompra = dr.GetSqlValue(0).ToString();
                             if (dr.GetSqlValue(1).ToString()=="Credito")
                             {
                                 radio1.Checked = true;
