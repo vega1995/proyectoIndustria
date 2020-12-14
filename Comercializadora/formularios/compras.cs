@@ -58,7 +58,7 @@ namespace Comercializadora.formularios
             columna5.ReadOnly = true;
             dataGridView2.Columns.Add(columna5);
 
-           
+            dataGridView2.AllowUserToAddRows = false;
 
             /*Poner columna solo lectura*/
             bloquearColumna();
@@ -141,7 +141,7 @@ namespace Comercializadora.formularios
                 return;
             }
 
-            if (txtTotal.Text=="")
+            if (txtTotal.Text=="0.00")
             {
                 MessageBox.Show("Por Favor elija los productos");
                 return;
@@ -154,70 +154,84 @@ namespace Comercializadora.formularios
 
             if (rdbContado.Checked)
             {
-                verificacion.estadoCompra = false;
-                //Carga de form de verificacion
+                verificacion.tipoCompra = "Credito";
+            }
+            else
+            {
+                verificacion.tipoCompra = "Contado";
+            }
+            verificacion.estadoCompra = false;
+            //Carga de form de verificacion
+            
+            verificacion.subTotal = txtSubTotal.Text;
+            verificacion.total = txtTotal.Text;
+            verificacion.proveedores = comboBox1.Text;
+            verificacion.nCompra = lbnCompra.Text;
+            verificacion.impuesto = txtISV.Text;
+            if (verificacion.tipoCompra=="Credito")
+            {
                 frmconfirm confirmar = new frmconfirm();
-                verificacion.subTotal = txtSubTotal.Text;
-                verificacion.total= txtTotal.Text;
-                verificacion.proveedores = comboBox1.Text;
-               verificacion.nCompra = lbnCompra.Text;
-                verificacion.tipoCompra="Credito";
-                verificacion.impuesto = txtISV.Text;
+                confirmar.ShowDialog();
+            }
+            else
+            {
+                frmPagar f = new frmPagar();
+                f.ShowDialog();
+            }
 
-                confirmar.Show();
 
-               
-                if (verificacion.estadoCompra)
+
+            if (verificacion.estadoCompra)
+            {
+                //Procedimiento almacenado de compradetalle
+                try
                 {
-                    //Procedimiento almacenado de compradetalle
-                    try
+                    conexionbd conn = new conexionbd();
+                    using (conn.Conectarbd)
                     {
-                        conexionbd conn = new conexionbd();
-                        using (conn.Conectarbd)
+                        conn.abrir();
+
+
+                        int Contador = 0;
+                        string query = "INSERT INTO CompraDetalle VALUES (@compraID, @ProductoID,@Cantidad, @Precio, @ISV,@fecha)";
+                        using (SqlCommand cmd = new SqlCommand(query, conn.Conectarbd))
                         {
-                            conn.abrir();
 
-
-                            int Contador = 0;
-                            using (SqlCommand cmd = new SqlCommand("spCompraDetalle", conn.Conectarbd))
+                            // cmd.CommandType = CommandType.StoredProcedure;
+                            foreach (DataGridViewRow row in dataGridView2.Rows)
                             {
-                                
-                                cmd.CommandType = CommandType.StoredProcedure;
-                                foreach (DataGridViewRow row in dataGridView2.Rows)
-                                {
-                                    cmd.Parameters.Clear();
-                                    cmd.Parameters.AddWithValue("@CompraID", Convert.ToInt32(verificacion.nCompra));
-                                    cmd.Parameters.AddWithValue("@ProductoID", Convert.ToString(row.Cells["ID"].Value));
-                                    cmd.Parameters.AddWithValue("@Cantidad", Convert.ToInt32(row.Cells["cantidad"].Value));
-                                    cmd.Parameters.AddWithValue("@Precio", Convert.ToDouble(row.Cells["Precio"].Value));
-                                    cmd.Parameters.AddWithValue("@ISV",0 );
-                                    cmd.ExecuteNonQuery();
-                                    Contador++;
-                                }
-                                if (Contador>0)
+                                // MessageBox.Show();
 
-                                {
-                                    MessageBox.Show("Compra realizada correctamente");
-                                    verificacion.estadoCompra = false;
-                                }
+
+                                cmd.Parameters.Clear();
+                                cmd.Parameters.AddWithValue("@CompraID", Convert.ToInt32(verificacion.nCompra));
+                                cmd.Parameters.AddWithValue("@ProductoID", Convert.ToInt32(row.Cells["ID"].Value));
+                                cmd.Parameters.AddWithValue("@Cantidad", Convert.ToInt32(row.Cells["cantidad"].Value));
+                                cmd.Parameters.AddWithValue("@Precio", Convert.ToDouble(row.Cells["Precio"].Value));
+                                cmd.Parameters.AddWithValue("@ISV", Convert.ToDouble(0.00));
+                                cmd.Parameters.AddWithValue("@fecha", Convert.ToDateTime("2020/12/14"));
+                                cmd.ExecuteNonQuery();
+                                Contador++;
                             }
+                            if (Contador > 0)
 
-                            
+                            {
+                                MessageBox.Show("Compra realizada correctamente");
+                                verificacion.estadoCompra = false;
+                            }
                         }
 
 
-
                     }
-                    catch (Exception)
-                    {
 
-                        throw;
-                    }
 
 
                 }
-
-
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    // throw;
+                }
 
 
             }
@@ -228,8 +242,8 @@ namespace Comercializadora.formularios
 
 
 
-           
-           
+
+
         }
         protected override void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {

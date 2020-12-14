@@ -15,8 +15,6 @@ namespace Comercializadora.formularios
 {
     public partial class frmSaldoProveedor : Comercializadora.formularios.mantenimiento
     {
-        DataTable dt;
-        SqlDataAdapter AdaptadorDB;
         conexionbd cn;
 
         public frmSaldoProveedor()

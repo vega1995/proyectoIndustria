@@ -30,15 +30,24 @@
         {
             this.SuspendLayout();
             // 
-            // comboBox1
+            // rbNombre
             // 
-            this.comboBox1.Size = new System.Drawing.Size(297, 26);
+            this.rbNombre.Checked = true;
             // 
-            // verficacion
+            // rbRTN
+            // 
+            this.rbRTN.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.Text = "Pagar";
+            this.button1.Click += new System.EventHandler(this.Button1_Click_1);
+            // 
+            // frmverficacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
-            this.ClientSize = new System.Drawing.Size(1370, 535);
-            this.Name = "verficacion";
+            this.ClientSize = new System.Drawing.Size(673, 390);
+            this.Name = "frmverficacion";
             this.Load += new System.EventHandler(this.Verficacion_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

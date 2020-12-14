@@ -72,6 +72,12 @@
     <Compile Include="formularios\frmPagar.Designer.cs">
       <DependentUpon>frmPagar.cs</DependentUpon>
     </Compile>
+    <Compile Include="formularios\frmPagos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios\frmPagos.designer.cs">
+      <DependentUpon>frmPagos.cs</DependentUpon>
+    </Compile>
     <Compile Include="formularios\frmProveedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +89,12 @@
     </Compile>
     <Compile Include="formularios\frmSaldoProveedor.Designer.cs">
       <DependentUpon>frmSaldoProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formularios\frmVerificarCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios\frmVerificarCompra.designer.cs">
+      <DependentUpon>frmVerificarCompra.cs</DependentUpon>
     </Compile>
     <Compile Include="formularios\Inventario.cs">
       <SubType>Form</SubType>
@@ -128,11 +140,17 @@
     <EmbeddedResource Include="formularios\frmPagar.resx">
       <DependentUpon>frmPagar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="formularios\frmPagos.resx">
+      <DependentUpon>frmPagos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formularios\frmProveedor.resx">
       <DependentUpon>frmProveedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formularios\frmSaldoProveedor.resx">
       <DependentUpon>frmSaldoProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularios\frmVerificarCompra.resx">
+      <DependentUpon>frmVerificarCompra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formularios\Inventario.resx">
       <DependentUpon>Inventario.cs</DependentUpon>

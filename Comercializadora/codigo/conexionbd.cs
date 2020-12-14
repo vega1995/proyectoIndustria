@@ -233,7 +233,7 @@ namespace Comercializadora.codigo
                 using (Conectarbd)
                 {
                     Conectarbd.Open();
-                    using (SqlCommand cmd = new SqlCommand("select count(CompraID)+1 from compra", Conectarbd))
+                    using (SqlCommand cmd = new SqlCommand("select MAX(CompraID)+1 from compra", Conectarbd))
                     {
                         SqlDataReader dr = cmd.ExecuteReader();
                         if (dr.Read())
