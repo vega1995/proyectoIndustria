@@ -12,5 +12,11 @@ namespace Comercializadora.codigo
         internal static string impuesto { get; set; }
         internal static string precio { get; set; }
         internal static string tipoCompra { get; set; }
+        internal static string total { get; set; }
+        internal static string subTotal { get; set; }
+        //internal static string Impuesto { get; set; }
+
+        internal static string nCompra { get; set; }
+        internal static Boolean estadoCompra { get; set; }
     }
 }

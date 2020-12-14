@@ -223,6 +223,36 @@ namespace Comercializadora.codigo
 
         }
 
+        public String compraid()
+        {
+            Conectarbd.Close();
+            String compraID="";
+            try
+            {
+
+                using (Conectarbd)
+                {
+                    Conectarbd.Open();
+                    using (SqlCommand cmd = new SqlCommand("select count(CompraID)+1 from compra", Conectarbd))
+                    {
+                        SqlDataReader dr = cmd.ExecuteReader();
+                        if (dr.Read())
+                        {
+
+                            compraID = dr.GetSqlValue(0).ToString();
+                            return compraID;
+                        }
+                    }
+                    //Conectarbd.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return compraID;
+
+        }
         public void mostrarNombre(string usuario)
         {
             String nombre="";

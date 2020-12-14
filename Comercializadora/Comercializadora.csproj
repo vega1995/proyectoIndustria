@@ -60,6 +60,18 @@
     <Compile Include="formularios\compras.Designer.cs">
       <DependentUpon>compras.cs</DependentUpon>
     </Compile>
+    <Compile Include="formularios\frmconfirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios\frmconfirm.Designer.cs">
+      <DependentUpon>frmconfirm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formularios\frmPagar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios\frmPagar.Designer.cs">
+      <DependentUpon>frmPagar.cs</DependentUpon>
+    </Compile>
     <Compile Include="formularios\frmProveedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +102,12 @@
     <Compile Include="formularios\principal.Designer.cs">
       <DependentUpon>principal.cs</DependentUpon>
     </Compile>
+    <Compile Include="formularios\frmverficacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios\frmverficacion.Designer.cs">
+      <DependentUpon>frmverficacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="formularios\vista.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +121,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formularios\compras.resx">
       <DependentUpon>compras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularios\frmconfirm.resx">
+      <DependentUpon>frmconfirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularios\frmPagar.resx">
+      <DependentUpon>frmPagar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formularios\frmProveedor.resx">
       <DependentUpon>frmProveedor.cs</DependentUpon>
@@ -118,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formularios\principal.resx">
       <DependentUpon>principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularios\frmverficacion.resx">
+      <DependentUpon>frmverficacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formularios\vista.resx">
       <DependentUpon>vista.cs</DependentUpon>

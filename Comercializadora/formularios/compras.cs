@@ -24,7 +24,13 @@ namespace Comercializadora.formularios
             cn.abrir();
             cn.vistas("vInventarioCompra order by Existencia asc, [Fecha de Vencimiento] asc", dataGridView1);
             cn.vistasCombos("select nombre from proveedor", comboBox1, "nombre");
-
+            lbnCompra.Text = cn.compraid();
+            DataGridViewTextBoxColumn columna6 = new DataGridViewTextBoxColumn();
+            columna6.HeaderText = "ID";
+            columna6.Name = "ID";
+            columna6.Width = 100;
+            columna6.ReadOnly = true;
+            dataGridView2.Columns.Add(columna6);
             DataGridViewTextBoxColumn columna1 = new DataGridViewTextBoxColumn();
             columna1.HeaderText = "Nombre";
             columna1.Width = 200;
@@ -32,10 +38,12 @@ namespace Comercializadora.formularios
             dataGridView2.Columns.Add(columna1);
             DataGridViewTextBoxColumn columna2 = new DataGridViewTextBoxColumn();
             columna2.HeaderText = "Cantidad a Pedir";
+            columna2.Name = "Cantidad";
             columna2.Width = 100;
             dataGridView2.Columns.Add(columna2);
             columna3 = new DataGridViewTextBoxColumn();
             columna3.HeaderText = "Precio";
+            columna3.Name = "Precio";
             columna3.Width = 100;
             dataGridView2.Columns.Add(columna3);
 
@@ -50,6 +58,7 @@ namespace Comercializadora.formularios
             columna5.ReadOnly = true;
             dataGridView2.Columns.Add(columna5);
 
+           
 
             /*Poner columna solo lectura*/
             bloquearColumna();
@@ -63,9 +72,9 @@ namespace Comercializadora.formularios
             double ISV = 0;
             foreach (DataGridViewRow row in dataGridView2.Rows)
             {
-                ISV += Convert.ToDouble(dataGridView2.Rows[i].Cells[1].Value) * Convert.ToDouble(dataGridView2.Rows[i].Cells[2].Value) * Convert.ToDouble(dataGridView2.Rows[i].Cells[3].Value);
-                Total += Convert.ToDouble(row.Cells[1].Value) * Convert.ToDouble(row.Cells[2].Value);
-                dataGridView2.Rows[i].Cells[4].Value = Convert.ToDouble(row.Cells[1].Value) * Convert.ToDouble(row.Cells[2].Value);
+                ISV += 0;
+                Total += Convert.ToDouble(row.Cells[2].Value) * Convert.ToDouble(row.Cells[3].Value);
+                dataGridView2.Rows[i].Cells[4].Value = "0";
                 //row.Cells[4].RowIndex[i].Value = Total;
                 i++;
             }
@@ -88,11 +97,13 @@ namespace Comercializadora.formularios
 
                         DataGridViewRow fila = new DataGridViewRow();
                         fila.CreateCells(dataGridView2);
-                        fila.Cells[0].Value = row.Cells[2].Value;
-                        fila.Cells[1].Value = "1";
-                        fila.Cells[2].Value = row.Cells[4].Value;
-                        fila.Cells[3].Value = "0.15";
-                        fila.Cells[4].Value= row.Cells[4].Value;
+                        fila.Cells[0].Value = row.Cells[1].Value;
+                        fila.Cells[1].Value = row.Cells[2].Value;
+                        fila.Cells[2].Value = "1";
+                        fila.Cells[3].Value = row.Cells[4].Value;
+                        fila.Cells[4].Value = "0";
+                        fila.Cells[5].Value= row.Cells[4].Value;
+                       
                         dataGridView2.Rows.Add(fila);
                     }
                     
@@ -124,15 +135,87 @@ namespace Comercializadora.formularios
 
         private void Button1_Click_1(object sender, EventArgs e)
         {
-            DialogResult pos;
+            if (comboBox1.Text == "")
+            {
+                MessageBox.Show("Por favor elija proveedor");
+                return;
+            }
+
+            if (txtTotal.Text=="")
+            {
+                MessageBox.Show("Por Favor elija los productos");
+                return;
+            }
+
             //Querys para Compras y CompraDetalle
 
 
             //Validacion si es contado o credito
 
-            if (rtbCredito.Checked)
+            if (rdbContado.Checked)
             {
+                verificacion.estadoCompra = false;
                 //Carga de form de verificacion
+                frmconfirm confirmar = new frmconfirm();
+                verificacion.subTotal = txtSubTotal.Text;
+                verificacion.total= txtTotal.Text;
+                verificacion.proveedores = comboBox1.Text;
+               verificacion.nCompra = lbnCompra.Text;
+                verificacion.tipoCompra="Credito";
+                verificacion.impuesto = txtISV.Text;
+
+                confirmar.Show();
+
+               
+                if (verificacion.estadoCompra)
+                {
+                    //Procedimiento almacenado de compradetalle
+                    try
+                    {
+                        conexionbd conn = new conexionbd();
+                        using (conn.Conectarbd)
+                        {
+                            conn.abrir();
+
+
+                            int Contador = 0;
+                            using (SqlCommand cmd = new SqlCommand("spCompraDetalle", conn.Conectarbd))
+                            {
+                                
+                                cmd.CommandType = CommandType.StoredProcedure;
+                                foreach (DataGridViewRow row in dataGridView2.Rows)
+                                {
+                                    cmd.Parameters.Clear();
+                                    cmd.Parameters.AddWithValue("@CompraID", Convert.ToInt32(verificacion.nCompra));
+                                    cmd.Parameters.AddWithValue("@ProductoID", Convert.ToString(row.Cells["ID"].Value));
+                                    cmd.Parameters.AddWithValue("@Cantidad", Convert.ToInt32(row.Cells["cantidad"].Value));
+                                    cmd.Parameters.AddWithValue("@Precio", Convert.ToDouble(row.Cells["Precio"].Value));
+                                    cmd.Parameters.AddWithValue("@ISV",0 );
+                                    cmd.ExecuteNonQuery();
+                                    Contador++;
+                                }
+                                if (Contador>0)
+
+                                {
+                                    MessageBox.Show("Compra realizada correctamente");
+                                    verificacion.estadoCompra = false;
+                                }
+                            }
+
+                            
+                        }
+
+
+
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
+                    }
+
+
+                }
 
 
 
@@ -145,38 +228,7 @@ namespace Comercializadora.formularios
 
 
 
-            pos=MessageBox.Show("Desea hacer la compra", "Mensaje", MessageBoxButtons.YesNoCancel);
-            if (pos== DialogResult.Yes)
-            {
-                MessageBox.Show("En Mantenimiento :)");
-                //Aqui van los procedimientos almacenados
-
-
-                //Agregando compra
-                /*  try
-                  {
-                      string empleadoID = Login.usuarioLogeado;
-                      string proveedorID = Login.ProveedorIDlog;
-                      string tipoCompra = Login.tipoCompra;
-                     // string fecha = dateTime.ToString("dd/MM/yyyy");
-                      conexionbd cn = new conexionbd();
-                      using (SqlCommand cmd = new SqlCommand("spAgregarCompra", cn.Conectarbd))
-                      {
-
-                          cmd.CommandType = CommandType.StoredProcedure;
-                          cmd.Parameters.Add(new SqlParameter("@ProveedorId",proveedorID));
-                          cmd.Parameters.Add(new SqlParameter("@empleadoId", empleadoID));
-                          cmd.Parameters.Add(new SqlParameter("@tipoCompra", tipoCompra));
-                      }
-
-
-                  }
-                  catch (Exception)
-                  {
-
-                      throw;
-                  }*/
-            }
+           
            
         }
         protected override void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)

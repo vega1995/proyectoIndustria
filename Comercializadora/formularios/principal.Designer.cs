@@ -569,6 +569,7 @@
             this.button2.Text = "Verifcar Compra";
             this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // button3
             // 

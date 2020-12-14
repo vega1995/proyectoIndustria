@@ -155,5 +155,12 @@ namespace Comercializadora.formularios
             frmSaldoProveedor sp = new frmSaldoProveedor();
             sp.ShowDialog();
         }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            //verificacion ve = new verificacion();
+            frmverficacion verificar = new frmverficacion();
+            verificar.Show();
+        }
     }
 }

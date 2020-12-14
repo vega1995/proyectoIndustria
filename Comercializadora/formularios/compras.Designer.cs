@@ -39,6 +39,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.labelSaldo = new System.Windows.Forms.Label();
             this.txtSaldo = new System.Windows.Forms.TextBox();
+            this.lbnCompra = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -140,7 +141,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(205, 26);
             this.textBox1.TabIndex = 33;
-            this.textBox1.TextChanged += new System.EventHandler(this.TextBox1_TextChanged);
+           // this.textBox1.TextChanged += new System.EventHandler(this.TextBox1_TextChanged);
             // 
             // label6
             // 
@@ -172,10 +173,21 @@
             this.txtSaldo.TabIndex = 36;
             this.txtSaldo.Visible = false;
             // 
+            // lbnCompra
+            // 
+            this.lbnCompra.AutoSize = true;
+            this.lbnCompra.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbnCompra.Location = new System.Drawing.Point(1185, 64);
+            this.lbnCompra.Name = "lbnCompra";
+            this.lbnCompra.Size = new System.Drawing.Size(59, 19);
+            this.lbnCompra.TabIndex = 37;
+            this.lbnCompra.Text = "label9";
+            // 
             // compras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.ClientSize = new System.Drawing.Size(1370, 541);
+            this.Controls.Add(this.lbnCompra);
             this.Controls.Add(this.txtSaldo);
             this.Controls.Add(this.labelSaldo);
             this.Controls.Add(this.label6);
@@ -186,6 +198,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "compras";
             this.Load += new System.EventHandler(this.Compras_Load);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.txtSubTotal, 0);
             this.Controls.SetChildIndex(this.txtISV, 0);
             this.Controls.SetChildIndex(this.txtTotal, 0);
@@ -199,6 +213,7 @@
             this.Controls.SetChildIndex(this.label6, 0);
             this.Controls.SetChildIndex(this.labelSaldo, 0);
             this.Controls.SetChildIndex(this.txtSaldo, 0);
+            this.Controls.SetChildIndex(this.lbnCompra, 0);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -221,5 +236,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label labelSaldo;
         private System.Windows.Forms.TextBox txtSaldo;
+        private System.Windows.Forms.Label lbnCompra;
     }
 }

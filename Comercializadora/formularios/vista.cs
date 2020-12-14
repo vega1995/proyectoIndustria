@@ -35,9 +35,9 @@ namespace Comercializadora.formularios
             double ISV=0;
             foreach (DataGridViewRow row in dataGridView2.Rows )
             {
-                ISV += Convert.ToDouble(dataGridView2.Rows[i].Cells[1].Value) * Convert.ToDouble(dataGridView2.Rows[i].Cells[2].Value) * Convert.ToDouble(dataGridView2.Rows[i].Cells[3].Value);
-                Total += Convert.ToDouble(row.Cells[1].Value) * Convert.ToDouble(row.Cells[2].Value);
-                dataGridView2.Rows[i].Cells[4].Value = Convert.ToDouble(row.Cells[1].Value) * Convert.ToDouble(row.Cells[2].Value);
+                ISV += Convert.ToDouble(dataGridView2.Rows[i].Cells[2].Value) * Convert.ToDouble(dataGridView2.Rows[i].Cells[3].Value) * Convert.ToDouble(dataGridView2.Rows[i].Cells[4].Value);
+                Total += Convert.ToDouble(row.Cells[2].Value) * Convert.ToDouble(row.Cells[3].Value);
+                dataGridView2.Rows[i].Cells[5].Value = Convert.ToDouble(row.Cells[2].Value) * Convert.ToDouble(row.Cells[3].Value);
                 //row.Cells[4].RowIndex[i].Value = Total;
                 i++;
             }
