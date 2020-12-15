@@ -13,6 +13,7 @@ namespace Comercializadora.formularios
     public partial class compras : vista
     {
         DataGridViewTextBoxColumn columna3;
+        int totalC;
         public compras()
         {
             InitializeComponent();

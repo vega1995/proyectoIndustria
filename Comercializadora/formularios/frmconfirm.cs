@@ -64,6 +64,18 @@ namespace Comercializadora.formularios
                         int n=cmd.ExecuteNonQuery();
                         if (n>0)
                         {
+                            using (SqlCommand update = new SqlCommand("spActualizarSaldo", cn.Conectarbd))
+                            {
+                                
+                                cmd.CommandType = CommandType.StoredProcedure;
+                                cmd.Parameters.Add(new SqlParameter("@totalC",Convert.ToInt32(verificacion.totalItem)));
+                                cmd.Parameters.Add(new SqlParameter("@ProveedorId", empleadoID));
+                                cmd.Parameters.Add(new SqlParameter("@tipoCompra", tipoCompra));
+                                
+                                int n2 = cmd.ExecuteNonQuery();
+
+                            }
+
                             verificacion.estadoCompra = true;
                             this.Close();
                         }

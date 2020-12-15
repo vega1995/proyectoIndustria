@@ -95,7 +95,7 @@
             // 
             this.lbFecha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbFecha.AutoSize = true;
-            this.lbFecha.Location = new System.Drawing.Point(292, 20);
+            this.lbFecha.Location = new System.Drawing.Point(264, 20);
             this.lbFecha.Name = "lbFecha";
             this.lbFecha.Size = new System.Drawing.Size(51, 19);
             this.lbFecha.TabIndex = 5;

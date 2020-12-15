@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Comercializadora.codigo;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ namespace Comercializadora.formularios
 {
     public partial class vista : Form
     {
+        int totalC=0;
         public vista()
         {
             InitializeComponent();
@@ -33,18 +35,23 @@ namespace Comercializadora.formularios
             double Total = 0;
             int i = 0;
             double ISV=0;
+            totalC = 0;
             foreach (DataGridViewRow row in dataGridView2.Rows )
             {
+
                 ISV += Convert.ToDouble(dataGridView2.Rows[i].Cells[2].Value) * Convert.ToDouble(dataGridView2.Rows[i].Cells[3].Value) * Convert.ToDouble(dataGridView2.Rows[i].Cells[4].Value);
                 Total += Convert.ToDouble(row.Cells[2].Value) * Convert.ToDouble(row.Cells[3].Value);
-                dataGridView2.Rows[i].Cells[5].Value = Convert.ToDouble(row.Cells[2].Value) * Convert.ToDouble(row.Cells[3].Value);
+              dataGridView2.Rows[i].Cells[5].Value = Convert.ToDouble(row.Cells[2].Value) * Convert.ToDouble(row.Cells[3].Value);
+                
                 //row.Cells[4].RowIndex[i].Value = Total;
+                totalC=totalC + Convert.ToInt32(dataGridView2.Rows[i].Cells[5].Value);
                 i++;
             }
             txtSubTotal.Text = Total.ToString("N");
             txtISV.Text = ISV.ToString("N");
             double granTotal = Total + ISV;
             txtTotal.Text = granTotal.ToString("N");
+            verificacion.totalItem = totalC;
         }
 
         private void DataGridView2_DoubleClick(object sender, EventArgs e)

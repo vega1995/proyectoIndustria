@@ -134,7 +134,7 @@ namespace Comercializadora.codigo
             
         }
 
-        public void validarUsuario(string usuario, string pass)
+        public void validarUsuario(string usuario, string pass, Form login)
         {
             try
             {
@@ -156,8 +156,8 @@ namespace Comercializadora.codigo
                             MessageBox.Show("Login exitoso.");
                             principal p = new principal();
                             p.Show();
-                            Form1 f = new Form1();
-                            f.Hide();
+                            
+                            login.Hide();
                         }
                         else
                         {

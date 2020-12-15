@@ -18,5 +18,6 @@ namespace Comercializadora.codigo
 
         internal static string nCompra { get; set; }
         internal static Boolean estadoCompra { get; set; }
+        internal static int totalItem { get; set; }
     }
 }

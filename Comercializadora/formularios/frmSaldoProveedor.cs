@@ -25,10 +25,10 @@ namespace Comercializadora.formularios
 
         private void frmSaldoProveedor_Load(object sender, EventArgs e)
         {
-            cn = new conexionbd();
-            cn.abrir();
             string fecha = dateTimePicker1.Value.ToString();
-            cn.vistas("fSaldoProveedor('"+fecha+"')", dataGridView1);
+            cn = new conexionbd();
+            //cn.vistas(" vCompras where Estado='Pendiente'", dataGridView1);
+            cn.vistas("vCuentaPagar", dataGridView1);
             rbRTN.Text = "ID";
 
             /*foreach (DataColumn col in dt.Columns)
