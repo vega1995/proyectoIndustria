@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -27,21 +28,80 @@ namespace Comercializadora.formularios
             dataGridView1.AllowUserToAddRows = false;
 
             conexionbd cn = new conexionbd();
-            cn.vistas(" vCompras where Estado='Pendiente'", dataGridView1);
+            cn.vistas(" vCompras where Estado='Pendiente'  OR Estado='ANULADA'", dataGridView1);
 
         }
 
         protected override void Button1_Click(object sender, EventArgs e)
         {
-            try
+            string proveedorID = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            string compraID = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            string TOTAL = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+
+            string stado = "";
+            if (rbtAceptar.Checked)
             {
-                cn.guardar();
+                stado = "A";
+                cn = new conexionbd();
+                cn.abrir();
+                using (SqlCommand update = new SqlCommand("spVerificarCompra ", cn.Conectarbd))
+                {
+                    SqlParameter[] param = new SqlParameter[2];
+                    param[0] = new SqlParameter("@CompraID", SqlDbType.Int);
+                    param[0].Value = compraID;
+                    param[1] = new SqlParameter("@estado", SqlDbType.NChar);
+                    param[1].Value = "A";
+
+
+                    update.CommandType = CommandType.StoredProcedure;
+         
+                    //txtnCompra.Text
+                    update.Parameters.AddRange(param);
+
+                    int n1 = update.ExecuteNonQuery();
+                    if (n1>0)
+                    {
+                        MessageBox.Show("Compra aceptada");
+                        cn.vistas(" vCompras where Estado='Pendiente' OR Estado='ANULADA'", dataGridView1);
+
+                    }
+                }
+
+
             }
-            catch (Exception ex)
+            if (rbtDevolver.Checked)
             {
-                MessageBox.Show(ex.Message);
+                stado = "X";
+                cn = new conexionbd();
+                cn.abrir();
+                using (SqlCommand update = new SqlCommand("spAnularCompra ", cn.Conectarbd))
+                {
+                    SqlParameter[] param = new SqlParameter[1];
+                    param[0] = new SqlParameter("@CompraID", SqlDbType.Int);
+                    param[0].Value = compraID;
+                    update.CommandType = CommandType.StoredProcedure;
+
+                    //txtnCompra.Text
+                    update.Parameters.AddRange(param);
+
+                     int n2 = update.ExecuteNonQuery();
+                    if (n2>0)
+                    {
+                        MessageBox.Show("Compra anulada");
+                    }
+                }
+            }
+               
+
+            if (rdbPendiente.Checked)
+            {
+                stado = "P";
+               
             }
 
+
+            
+           
 
             /**
              AdaptadorDB = new SqlDataAdapter();
